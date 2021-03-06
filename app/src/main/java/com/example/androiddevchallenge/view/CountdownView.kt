@@ -1,23 +1,45 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.view
 
 import android.util.Log
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.androiddevchallenge.data.num
 import com.example.androiddevchallenge.viewModel.MyViewModel
-
 
 @Composable
 fun CountdownView(modifier: Modifier = Modifier, numss: Array<Array<Int>>, size: Dp) {
@@ -39,7 +61,6 @@ fun CountdownView(modifier: Modifier = Modifier, numss: Array<Array<Int>>, size:
         animationSpec = spring(25f, 1000000f),
         finishedListener = {
             if (viewModel.isRun == false) {
-
             }
             blue = !blue
         }
@@ -69,7 +90,7 @@ fun CountdownView(modifier: Modifier = Modifier, numss: Array<Array<Int>>, size:
                             .width(size)
                             .height(size)
                             .padding(size / 10)
-                            .background(Color.White)
+//                            .background(Color.White)
 //                            .background(if (!viewModel.isRun) Color.White else (if(blue) color2 else (if (num[viewModel.aa % 10][itemPosition][position] == 1) color1 else color2)))
                             .background(if (!viewModel.isRun) Color.White else (if (numss[itemPosition][position] == 1) color1 else color2))
                     )

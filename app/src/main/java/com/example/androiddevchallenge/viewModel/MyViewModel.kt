@@ -15,14 +15,12 @@
  */
 package com.example.androiddevchallenge.viewModel
 
-import android.icu.text.SimpleDateFormat
 import android.os.Handler
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.androiddevchallenge.utils.TimeUtil
 import kotlin.random.Random
 
 class MyViewModel : ViewModel() {

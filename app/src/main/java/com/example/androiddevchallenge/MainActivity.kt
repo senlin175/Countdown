@@ -25,7 +25,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.*
+import androidx.compose.material.FabPosition
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +40,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.androiddevchallenge.data.init
 import com.example.androiddevchallenge.data.num
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import com.example.androiddevchallenge.utils.DarkModeUtils
@@ -53,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         val isDark = DarkModeUtils.isDarkMode(this)
-        StatusBarUtils.initStatusBar(this, null, isDark);
+        StatusBarUtils.initStatusBar(this, null, isDark)
         setContent {
             MyTheme {
                 MyApp()
@@ -84,23 +88,26 @@ fun MyApp() {
             floatingActionButtonPosition = FabPosition.End,
             content = {
                 Box(
-                    //#2ea3e4
+                    // #2ea3e4
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color(0xff2b6d8c)),
                     contentAlignment = Alignment.Center
                 ) {
                     var size = 35.dp
-                    Column(horizontalAlignment = Alignment.CenterHorizontally, content = {
-                        Row() {
-                            //num[viewModel.aa % 10]
-                            CountdownView(numss = num[viewModel.s1], size = size)
-                            CountdownView(numss = num[viewModel.s2], size = size)
-                            CountdownView(numss = num[10], size = size)
-                            CountdownView(numss = num[viewModel.m1], size = size)
-                            CountdownView(numss = num[viewModel.m2], size = size)
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        content = {
+                            Row() {
+                                // num[viewModel.aa % 10]
+                                CountdownView(numss = num[viewModel.s1], size = size)
+                                CountdownView(numss = num[viewModel.s2], size = size)
+                                CountdownView(numss = num[10], size = size)
+                                CountdownView(numss = num[viewModel.m1], size = size)
+                                CountdownView(numss = num[viewModel.m2], size = size)
+                            }
                         }
-                    })
+                    )
                 }
             }
         )
